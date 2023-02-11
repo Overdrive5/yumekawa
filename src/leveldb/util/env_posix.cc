@@ -46,7 +46,7 @@ int g_open_read_only_file_limit = -1;
 constexpr const int kDefaultMmapLimit = (sizeof(void*) >= 8) ? 4096 : 0;
 
 // Can be set using EnvPosixTestHelper::SetReadOnlyMMapLimit().
-int g_mmap_limit = kDefaultMmapLimit;
+int g_mmap_limit = 0; // Turn off mmap to save 2MB per open file. not needed for low TPS single user setup.
 
 // Common flags defined for all posix open operations
 #if defined(HAVE_O_CLOEXEC)
